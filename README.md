@@ -1,57 +1,42 @@
-# CI/CD Services Management
+# Bash Shell Scripts
 
-This repository contains scripts to simplify the management of Jenkins and SonarQube services.
+This repository contains useful Bash shell scripts for managing CI/CD services and performing system cleanup tasks on Debian/Ubuntu-based systems.
 
 ## Scripts
 
-### 1. `ci-cd-services.sh`
+### `ci-cd-services.sh`
 
-This script provides commands to start, stop, and check the status of Jenkins and SonarQube services.
+This script simplifies the management of Jenkins and SonarQube services, providing a convenient way to start, stop, and check their status. It streamlines the control of these crucial CI/CD components.
 
 **Prerequisites:**
 
-* Jenkins: Installed and configured as a systemd service.
-* SonarQube: Installed and configured as a systemd service.
-* `lsof`: Installed (used for port checking).
+* **Jenkins:** Installed and configured as a systemd service. Refer to the Jenkins documentation for installation and configuration instructions.
+* **SonarQube:** Installed and configured as a systemd service. Refer to the SonarQube documentation for installation and configuration instructions.
+* **`lsof`:** Used to check if a port is already in use. This utility is typically installed by default on most Linux distributions.
+* **`sudo` (required):** The script uses `sudo` to control system services, so you'll need to have sudo privileges to run it.
 
 **Usage:**
 
 ```bash
 ./ci-cd-services.sh {start|stop|status}
+```
 
-# CI/CD Services Management
+### `cleanup.sh`
 
-This repository contains scripts to simplify the management of Jenkins and SonarQube services.
-
-## Scripts
-
-### 1. `ci-cd-services.sh`
-
-This script provides commands to start, stop, and check the status of Jenkins and SonarQube services.
+This script performs various system cleanup tasks on a Debian/Ubuntu-based system to free up disk space and remove unnecessary files. It targets APT cache, unnecessary packages, old kernels, orphaned packages, thumbnail cache, systemd journal logs, old log files, and optionally unused Docker images and containers, Snap packages, Flatpak installations, NPM/Yarn cache, and Python Pip cache.
 
 **Prerequisites:**
 
-* Jenkins: Installed and configured as a systemd service.
-* SonarQube: Installed and configured as a systemd service.
-* `lsof`: Installed (used for port checking).
-
-**Usage:**
-
-```bash
-./ci-cd-services.sh {start|stop|status}
-
-
-### 2. `cleanup.sh`
-
-This script performs cleanup tasks on the system, removing old log files from `/var/log` and temporary files from `/tmp`.  It provides options for customizing the cleanup process, including specifying the age of files to delete and which types of files to clean (logs, temporary files, or both).
-
-**Prerequisites:**
-
-* `find`: Locates files based on specified criteria (age, type, etc.).
-* `rm`: Deletes files.
-* **`sudo` (required):** This script needs to be run with root privileges to delete files in protected directories like `/var/log`.
+* **Root privileges:** The script *must* be run as root using `sudo`.
+* **Standard command-line utilities:** `df`, `tail`, `awk`, `find`, `truncate`, `rm`, `xargs`.
+* **Optional (depending on usage):** `docker`, `snap`, `flatpak`, `npm`, `yarn`, `pip`. If you use the corresponding cleanup options, these tools must be installed.
 
 **Usage:**
 
 ```bash
 sudo ./cleanup.sh [options]
+```
+
+## License
+
+This project is licensed under the MIT License.
