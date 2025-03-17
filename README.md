@@ -1,4 +1,4 @@
-# Bash Shell Scripts
+# Utility Bash Shell Scripts
 
 This repository contains useful Bash shell scripts for managing CI/CD services and performing system cleanup tasks on Debian/Ubuntu-based systems.
 
@@ -24,6 +24,10 @@ This script simplifies the management of Jenkins and SonarQube services, providi
 ### `cleanup.sh`
 
 This script performs various system cleanup tasks on a Debian/Ubuntu-based system to free up disk space and remove unnecessary files. It targets APT cache, unnecessary packages, old kernels, orphaned packages, thumbnail cache, systemd journal logs, old log files, and optionally unused Docker images and containers, Snap packages, Flatpak installations, NPM/Yarn cache, and Python Pip cache.
+
+# DevOps Bash Shell Scripts
+
+The remaining scripts are examples of Shell script usage and automation of common DevOps Tasks.
 
 **Prerequisites:**
 
