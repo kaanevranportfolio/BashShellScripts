@@ -1,10 +1,17 @@
 #!/bin/bash
-sed -i 's/\r$//' remhosts # Remove windows carriage return
 
+# Remove Windows carriage return characters from the remhosts file
+sed -i 's/\r$//' remhosts 
+
+# Loop through each host in the remhosts file
 for host in `cat remhosts`
- do
-    ssh devops@$host hostname; uptime
+do
+    # Connect to the remote host and execute commands
+    ssh devops@$host << 'EOF'
+    hostname
+    uptime
     echo "=============================="
     sudo yum install git -y
     echo "=============================="
+EOF
 done
